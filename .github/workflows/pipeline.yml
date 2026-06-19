@@ -1,0 +1,43 @@
+name: Tourism MLOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r deployment/requirements.txt
+
+      - name: Run Training
+        run: |
+          python model_building/train.py
+
+      - name: Run Evaluation
+        run: |
+          python model_building/evaluate.py
+
+      - name: Upload Model
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          echo "Upload model to HF"
+
+      - name: Deploy Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          echo "Deploy Space"
