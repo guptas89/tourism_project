@@ -20,5 +20,5 @@ WORKDIR $HOME/app
 # Copy the application code
 COPY --chown=user app.py $HOME/app/
 
-# Define the command to run the Streamlit app on port "8501" and make it accessible externally
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableXsrfProtection=false"]
+# Define the command to run the Streamlit app on port "7860" and make it accessible externally
+CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0", "--server.enableXsrfProtection=false"]
