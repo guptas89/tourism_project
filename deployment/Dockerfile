@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy requirements.txt first for better caching
-COPY deployment/requirements.txt .
+COPY requirements.txt .
 
 # Install Python dependencies listed in requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
@@ -17,8 +17,8 @@ ENV HOME=/home/user \
 
 WORKDIR $HOME/app
 
-# Copy the application code from deployment folder
-COPY --chown=user deployment/app.py $HOME/app/
+# Copy the application code
+COPY --chown=user app.py $HOME/app/
 
 # Define the command to run the Streamlit app on port "8501" and make it accessible externally
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableXsrfProtection=false"]
