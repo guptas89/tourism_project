@@ -5,6 +5,7 @@ An end-to-end MLOps project that predicts whether a customer will purchase a tou
 ## 📋 Project Overview
 
 This project demonstrates a complete MLOps pipeline including:
+
 - Data preprocessing and feature engineering
 - Model training with hyperparameter tuning (XGBoost)
 - MLflow experiment tracking
@@ -40,17 +41,20 @@ tourism_project/
 ## 🚀 Features
 
 ### Data Pipeline
+
 - **Data Registration**: Upload raw dataset to Hugging Face Datasets
 - **Preprocessing**: Handle missing values, encode categorical variables, feature scaling
 - **Train/Test Split**: Stratified split with 80/20 ratio
 
 ### Model Training
+
 - **Algorithm**: XGBoost Classifier
 - **Hyperparameter Tuning**: GridSearchCV with 3-fold cross-validation
 - **Experiment Tracking**: MLflow for logging parameters, metrics, and models
 - **Evaluation Metrics**: Accuracy, Precision, Recall, F1-Score, ROC-AUC
 
 ### MLOps Pipeline (GitHub Actions)
+
 1. **Register Dataset**: Upload tourism.csv to HF Hub
 2. **Data Preparation**: Preprocess and create train/test splits
 3. **Model Training**: Train with hyperparameter tuning, log to MLflow
@@ -58,6 +62,7 @@ tourism_project/
 5. **App Deployment**: Deploy Streamlit app to HF Spaces
 
 ### Web Application
+
 - **Framework**: Streamlit
 - **Features**: Interactive form with 18 input features
 - **Prediction**: Real-time classification with probability scores
@@ -67,30 +72,31 @@ tourism_project/
 
 The model uses 18 features to predict purchase likelihood:
 
-| Feature | Description | Type |
-|---------|-------------|------|
-| Age | Customer age | Numeric |
-| TypeofContact | How customer was contacted | Categorical |
-| CityTier | City tier (1, 2, 3) | Categorical |
-| DurationOfPitch | Sales pitch duration (minutes) | Numeric |
-| Occupation | Customer occupation | Categorical |
-| Gender | Customer gender | Categorical |
-| NumberOfPersonVisiting | Number of persons visiting | Numeric |
-| NumberOfFollowups | Number of followups | Numeric |
-| ProductPitched | Tourism package type | Categorical |
-| PreferredPropertyStar | Preferred hotel star rating | Numeric |
-| MaritalStatus | Marital status | Categorical |
-| NumberOfTrips | Past trips count | Numeric |
-| Passport | Has passport (0/1) | Binary |
-| PitchSatisfactionScore | Satisfaction score (1-5) | Numeric |
-| OwnCar | Owns car (0/1) | Binary |
-| NumberOfChildrenVisiting | Children count | Numeric |
-| Designation | Job designation | Categorical |
-| MonthlyIncome | Monthly income | Numeric |
+| Feature                  | Description                    | Type        |
+| ------------------------ | ------------------------------ | ----------- |
+| Age                      | Customer age                   | Numeric     |
+| TypeofContact            | How customer was contacted     | Categorical |
+| CityTier                 | City tier (1, 2, 3)            | Categorical |
+| DurationOfPitch          | Sales pitch duration (minutes) | Numeric     |
+| Occupation               | Customer occupation            | Categorical |
+| Gender                   | Customer gender                | Categorical |
+| NumberOfPersonVisiting   | Number of persons visiting     | Numeric     |
+| NumberOfFollowups        | Number of followups            | Numeric     |
+| ProductPitched           | Tourism package type           | Categorical |
+| PreferredPropertyStar    | Preferred hotel star rating    | Numeric     |
+| MaritalStatus            | Marital status                 | Categorical |
+| NumberOfTrips            | Past trips count               | Numeric     |
+| Passport                 | Has passport (0/1)             | Binary      |
+| PitchSatisfactionScore   | Satisfaction score (1-5)       | Numeric     |
+| OwnCar                   | Owns car (0/1)                 | Binary      |
+| NumberOfChildrenVisiting | Children count                 | Numeric     |
+| Designation              | Job designation                | Categorical |
+| MonthlyIncome            | Monthly income                 | Numeric     |
 
 ## 🔧 Installation & Setup
 
 ### Prerequisites
+
 - Python 3.9+
 - Git
 - Hugging Face account with access token
@@ -98,22 +104,26 @@ The model uses 18 features to predict purchase likelihood:
 ### Local Setup
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/guptas89/tourism_project.git
 cd tourism_project
 ```
 
 2. **Install dependencies**
+
 ```bash
 pip install -r deployment/requirements.txt
 ```
 
 3. **Set environment variables**
+
 ```bash
 export HF_TOKEN="your_huggingface_token"
 ```
 
 4. **Run the pipeline locally**
+
 ```bash
 # Register dataset
 python model_building/data_register.py
@@ -144,11 +154,13 @@ The project uses GitHub Actions for automated deployment:
 ### Required Secrets
 
 Add to GitHub repository secrets:
+
 - `HF_TOKEN`: Your Hugging Face access token
 
 ## 📈 Model Performance
 
 The XGBoost model is optimized using GridSearchCV with the following hyperparameters:
+
 - `n_estimators`: [100, 200, 300]
 - `max_depth`: [3, 5, 7]
 - `learning_rate`: [0.01, 0.05, 0.1]
@@ -224,11 +236,6 @@ This project is for educational purposes.
 ## 👨‍💻 Author
 
 **Siddharth Gupta**
+
 - GitHub: [@guptas89](https://github.com/guptas89)
 - Email: siddharthgupta2010@gmail.com
-
-## 🙏 Acknowledgments
-
-- Great Learning - MLOps Module
-- Hugging Face for hosting infrastructure
-- Scikit-learn and XGBoost communities
