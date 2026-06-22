@@ -17,11 +17,14 @@ ENV HOME=/home/user \
 
 WORKDIR $HOME/app
 
+# Copy the Streamlit config
+COPY --chown=user .streamlit $HOME/app/.streamlit
+
 # Copy the application code
 COPY --chown=user app.py $HOME/app/
 
 # Expose port 7860 for Hugging Face Spaces
 EXPOSE 7860
 
-# Define the command to run the Streamlit app on port "7860" and make it accessible externally
-CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0", "--server.enableXsrfProtection=false"]
+# Define the command to run the Streamlit app
+CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
