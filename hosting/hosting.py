@@ -3,7 +3,7 @@ from huggingface_hub.utils import RepositoryNotFoundError
 import os
 
 api = HfApi(token=os.getenv("HF_TOKEN"))
-repo_id = "guptas89/tourism-space"
+repo_id = "guptas89/tourism-package-app"
 repo_type = "space"
 
 # Step 1: Check if the space exists
